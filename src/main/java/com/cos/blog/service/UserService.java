@@ -24,6 +24,12 @@ public class UserService {
 	}
 	
 	@Transactional(readOnly = true)
+	public User 유저ID로확인(int userId) {
+		return userRepository.findById(userId).orElseThrow(()->{
+	         return new IllegalArgumentException();
+	      });
+	}
+	@Transactional(readOnly = true)
 	public User 닉네임중복체크(String nickName) {
 		return userRepository.m닉네임중복체크(nickName);
 	}
