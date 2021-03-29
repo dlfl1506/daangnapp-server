@@ -1,5 +1,6 @@
 package com.cos.blog.domain.post;
 
+import java.net.URI;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -49,6 +50,7 @@ public class Post {
    
    private String img; // 이미지 사진
    
+ 
    @ColumnDefault("0") // default값 0이 들어간다.
    private int favorite; // 관심수
    

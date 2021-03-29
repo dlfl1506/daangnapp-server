@@ -1,5 +1,6 @@
 package com.cos.blog.web;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,14 +21,24 @@ public class PostController {
 
 	private final PostService postService;
 	private final UserService userService;
-	
+
 	@PostMapping("/post")
-	public CMRespDto<?> 중고거래글쓰기(@RequestBody PostSaveReqDto postSaveReqDto,int userId){
+	public CMRespDto<?> 중고거래글쓰기(@RequestBody PostSaveReqDto postSaveReqDto, int userId) {
 		User userEntity = userService.유저ID로확인(userId);
 		Post post = postSaveReqDto.toEntity();
 		post.setUser(userEntity);
 		Post postEntity = postService.중고거래글쓰기(post);
 		return new CMRespDto<>(1, postEntity);
 	}
-	
+
+	@GetMapping("/post/gu")
+	public CMRespDto<?> 구별게시물검색(String gu) {
+		return new CMRespDto<>(1, postService.구별게시물검색(gu));
+	}
+
+	/*
+	 * @PostMapping("/post/gu") public CMRespDto<?> 구별게시물검색(String gu) { return new
+	 * CMRespDto<>(1, postService.구별게시물검색(gu)); }
+	 */
+
 }

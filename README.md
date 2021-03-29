@@ -8,6 +8,9 @@
 - MySQL Driver
 - Spring Web
 
+### 외부라이브러리
+- proj 1.06.jar
+- javaSDK 2.2.jar
 
 ### 데이터베이스
 ```sql
