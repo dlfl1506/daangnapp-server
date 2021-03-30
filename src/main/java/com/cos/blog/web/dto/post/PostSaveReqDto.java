@@ -1,6 +1,8 @@
 package com.cos.blog.web.dto.post;
 
+import java.net.URI;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -23,8 +25,9 @@ import lombok.Data;
 public class PostSaveReqDto {
 	   private String title; // 제목
 	   private String content; // 내용
-	   private String price; // 가격
-	   private String img; // 이미지 사진
+	    private String price; // 가격 // 가격
+
+	  private String img; // 이미지 사진
 	   private String gu;
 	   private String dong;
 	   private String category;

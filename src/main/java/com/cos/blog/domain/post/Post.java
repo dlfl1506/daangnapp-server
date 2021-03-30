@@ -2,6 +2,7 @@ package com.cos.blog.domain.post;
 
 import java.net.URI;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -48,11 +49,10 @@ public class Post {
    @ColumnDefault("0") 
    private String price; // 가격
    
-   private String img; // 이미지 사진
+   private String img;
    
- 
    @ColumnDefault("0") // default값 0이 들어간다.
-   private int favorite; // 관심수
+   private int favorite; // 관심수t
    
    @ColumnDefault("0")
    private int count; //조회수 
