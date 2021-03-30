@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cos.blog.domain.post.Post;
 import com.cos.blog.domain.post.PostRepository;
+import com.cos.blog.domain.user.User;
 import com.cos.blog.web.dto.post.PostSaveReqDto;
 
 import lombok.RequiredArgsConstructor;
@@ -14,16 +15,23 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class PostService {
-	
+
 	private final PostRepository postRepository;
-	
+
 	@Transactional
 	public Post 중고거래글쓰기(Post post) {
 		return postRepository.save(post);
 	}
+
 	@Transactional(readOnly = true)
-	public List<Post> 구별게시물검색(String gu){
+	public List<Post> 구별게시물검색(String gu) {
 		return postRepository.m구별게시물검색(gu);
 	}
 
+	@Transactional(readOnly = true)
+	public Post 게시물상세보기(int id) {
+		return postRepository.findById(id).orElseThrow(() -> {
+			return new IllegalArgumentException();
+		});
+	}
 }
