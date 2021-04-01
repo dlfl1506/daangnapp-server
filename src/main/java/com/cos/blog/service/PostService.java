@@ -30,6 +30,7 @@ public class PostService {
 
 	@Transactional(readOnly = true)
 	public Post 게시물상세보기(int id) {
+		
 		return postRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException();
 		});

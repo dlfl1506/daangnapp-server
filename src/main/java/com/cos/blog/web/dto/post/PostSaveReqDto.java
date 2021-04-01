@@ -23,17 +23,16 @@ import lombok.Data;
 
 @Data
 public class PostSaveReqDto {
-	   private String title; // 제목
-	   private String content; // 내용
-	    private String price; // 가격 // 가격
+	private String title; // 제목
+	private String content; // 내용
+	private String price; // 가격 // 가격
 
-	  private String img; // 이미지 사진
-	   private String gu;
-	   private String dong;
-	   private String category;
-	   
-	   public Post toEntity() {
-		   return Post.builder().title(title).content(content).price(price).img(img).gu(gu).dong(dong).category(category).build();
-	   }
-	   
+	private String gu;
+	private String dong;
+	private String category;
+
+	public Post toEntity() {
+		return Post.builder().title(title).content(content).price(price).gu(gu).dong(dong).category(category).build();
+	}
+
 }

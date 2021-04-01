@@ -10,7 +10,7 @@ import com.cos.blog.domain.location.Location;
 public interface PostRepository extends JpaRepository<Post, Integer> {
 
 	
-	@Query(value = "SELECT * FROM post where gu=?1",nativeQuery = true)
+	@Query(value = "SELECT * FROM post where gu=?1 order by createDate desc",nativeQuery = true)
 	List<Post> m구별게시물검색(String gu);
 }
 
