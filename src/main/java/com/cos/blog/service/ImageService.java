@@ -7,6 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cos.blog.domain.image.Image;
 import com.cos.blog.domain.image.ImageRepository;
+import com.cos.blog.domain.post.Post;
+import com.cos.blog.web.dto.post.PostUpdateReqDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -25,4 +27,6 @@ public class ImageService {
 	public Image 사진등록(Image image) {
 		return imageRepository.save(image);
 }
+	
+	
 }

@@ -9,6 +9,8 @@ import com.cos.blog.domain.post.Post;
 import com.cos.blog.domain.post.PostRepository;
 import com.cos.blog.domain.user.User;
 import com.cos.blog.web.dto.post.PostSaveReqDto;
+import com.cos.blog.web.dto.post.PostUpdateReqDto;
+import com.cos.blog.web.dto.user.UserUpdateReqdto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -34,5 +36,22 @@ public class PostService {
 		return postRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException();
 		});
+	}
+	
+	@Transactional
+	public void 게시물삭제(int id) {
+		postRepository.deleteById(id);
+	}
+	
+	
+	@Transactional
+	public Post 게시물수정(int id, PostUpdateReqDto postUpdateReqDto) {
+		// 영속화
+		Post postEntity = postRepository.findById(id).get();
+		postEntity.setTitle(postUpdateReqDto.getTitle());
+		postEntity.setCategory(postUpdateReqDto.getCategory());
+		postEntity.setPrice(postUpdateReqDto.getPrice());
+		postEntity.setContent(postUpdateReqDto.getContent());
+		return postEntity;
 	}
 }

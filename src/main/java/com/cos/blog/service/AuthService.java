@@ -76,7 +76,7 @@ public class AuthService {
 		params.put("to", authSaveReqDto.getPhoneNumber());
 		params.put("from", "01024091611");
 		params.put("type", "SMS");
-		params.put("text", "[당근마켓] 인증번호 [" + authSaveReqDto.getAuthCode() + "]" + "*타인에게 절대 노출하지마세요.");
+		params.put("text", "<#>[당근마켓] 인증번호 [" + authSaveReqDto.getAuthCode() + "]" + "*타인에게 절대 노출하지마세요.");
 		params.put("app_version", "test app 1.2"); // application name and version
 
 		/*
