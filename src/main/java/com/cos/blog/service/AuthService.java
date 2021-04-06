@@ -38,13 +38,13 @@ public class AuthService {
 
 	@Transactional
 	public Auth 인증코드수정(int id, AuthUpdateReqDto authUpdateReqDto) {
-		
+
 		// 영속화
 		Auth authEntity = authRepository.findById(id).orElseThrow(() -> {
-					return new IllegalArgumentException("id를 찾을 수 없습니다.");
-				});
+			return new IllegalArgumentException("id를 찾을 수 없습니다.");
+		});
 		authEntity.setAuthCode(authUpdateReqDto.getAuthCode());
-		
+
 		String api_key = "NCSC5OTLTRBTVJGQ";
 		String api_secret = "9PM4JVY0UYUPGEM0CAPKZNZXUACM38PK";
 		Message coolsms = new Message(api_key, api_secret);
@@ -53,7 +53,7 @@ public class AuthService {
 		params.put("to", authEntity.getPhoneNumber());
 		params.put("from", "01024091611");
 		params.put("type", "SMS");
-		params.put("text", "[당근마켓] 인증번호 [" +  authEntity.getAuthCode() + "]" + "*타인에게 절대 노출하지마세요.");
+		params.put("text", "[당근마켓] 인증번호 [" + authEntity.getAuthCode() + "]" + "*타인에게 절대 노출하지마세요.");
 		params.put("app_version", "test app 1.2"); // application name and version
 
 		/*

@@ -56,6 +56,12 @@ public class PostController {
 		return new CMRespDto<>(1, postService.구별게시물검색(gu));
 	}
 
+	@GetMapping("/post/gu/keyword")
+	public CMRespDto<?> 구별게시물검색(String gu,String keyword) {
+		return new CMRespDto<>(1, postService.제목으로검색(gu,keyword));
+	}
+
+	
 	@GetMapping("/post/image")
 	public CMRespDto<?> 게시물사진찾기(int postId) {
 		return new CMRespDto<>(1, imageService.게시물사진찾기(postId));

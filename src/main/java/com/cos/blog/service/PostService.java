@@ -29,15 +29,39 @@ public class PostService {
 	public List<Post> 구별게시물검색(String gu) {
 		return postRepository.m구별게시물검색(gu);
 	}
-
+	
 	@Transactional(readOnly = true)
-	public Post 게시물상세보기(int id) {
-		
-		return postRepository.findById(id).orElseThrow(() -> {
+	public List<Post> 제목으로검색(String gu,String keyword) {
+		return postRepository.제목으로검색(gu,keyword);
+	}
+
+	/*
+	 * @Transactional(readOnly = true) public Post 게시물상세보기(int id) {
+	 * 
+	 * return postRepository.findById(id).orElseThrow(() -> { return new
+	 * IllegalArgumentException(); }); }
+	 */
+	
+	@Transactional
+	public Post 게시물상세보기(int id){
+		Post post = postRepository.findById(id).orElseThrow(()->{
 			return new IllegalArgumentException();
 		});
+		//조회수 증가 요거만 추가
+		post.setCount(post.getCount()+1);
+		
+		//관심클릭하면 숫자증가
+		/*
+		 * int likeCount = post.getLike().size(); post.setFavorite(likeCount);
+		 */
+		
+//		post.getLike().forEach((like)->{
+//			if(like.getUser().getId()== userId) {
+//				post.setFavoriteState(true);
+//			}
+//		});
+		return post;
 	}
-	
 	@Transactional
 	public void 게시물삭제(int id) {
 		postRepository.deleteById(id);
